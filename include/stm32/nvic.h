@@ -3,8 +3,12 @@
 
 // NVIC DRIVER
 // ARM NVIC MODULE
+// STM32L432KC
 // NVIC Description - is on pg 320
 // NVIC Registers (Programming Manual) - is on 320
+// STM32L552ZE-Q
+// NVIC Description - is on pg 529
+// NVIC Registers (Programming Manual) - is on 178
 
 /* Nested vectored interrupt controller (NVIC) */
 #if ARCHFLAG == 4 
@@ -20,6 +24,12 @@
     #define NVIC_RESERVED   (uint32_t)16
     #define NVIC_IPR_SIZE   (uint32_t)480
 #else
+    /* OVERRIDES TO SILENCE COMPILER ERRORS */
+    #define NVIC_32BIT      (uint32_t)32
+    #define NVIC_8BIT       (uint32_t)8
+    #define NVIC_ARRAYSIZE  (uint32_t)8
+    #define NVIC_RESERVED   (uint32_t)24
+    #define NVIC_IPR_SIZE   (uint32_t)60
     #error Arch Flag Is Needed For NVIC.
 #endif
 
